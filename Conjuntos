@@ -1,0 +1,111 @@
+#include <iostream>
+
+using namespace std;
+
+void uniao (int cona[], int conb []);
+void diferenca(int cona[], int conb []);
+
+int main ()
+{
+    int x, cona[2], conb [2], i;
+
+    for (i = 0; i < 2; i++)
+    {
+        cout<<"Insira valores para o conjunto A: ";
+        cin>>cona[i];
+    }
+    
+    for (i = 0; i < 2; i++)
+    {
+        cout<<"Insira valores para o conjunto B: ";
+        cin>>conb[i];
+    }
+    
+    do
+    {
+        cout<<"\n\n1: Caso deseje fazer a uniao \n2: Caso deseje fazer a diferenca \n0: Se deseja sair do programa\n";
+        cin>>x;
+
+        system ("cls");
+
+        switch (x)
+        {
+        case 1: uniao(cona, conb); break;
+        case 2: diferenca(cona, conb); break;
+        }
+
+    } while (x!=0);
+    
+
+    return 0;
+
+}
+
+void uniao (int cona[], int conb [])
+{
+    int u[4];
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (i < 2)
+        {
+            u[i]=cona[i];
+        }
+        else
+        {
+            u[i]=conb[i-2];
+        }
+    }
+    
+    cout<<"Conjunto uniao e ";
+
+    for (int i = 0; i < 4; i++)
+    {   
+        cout<<u[i]<<" ";
+    }
+    
+}
+
+void diferenca(int cona[], int conb[])
+{
+    int dif[4];
+    
+    for (int i = 0; i < 4; i++)
+    {
+        if (i < 2)
+        {
+            dif[i]=cona[i];
+        }
+        else
+        {
+            dif[i]=conb[i-2];
+        }
+    }
+    
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 2; j < 4; j++)
+        {
+            if (dif[i]==dif[j])
+            {
+                dif[i]= 0;
+                dif[j]= 0;
+            }
+        }
+    }
+    
+    cout<<"Conjunto diferenca e ";
+    for (int i = 0; i < 4; i++)
+    {
+        if (dif[i]==0)
+        {
+            cout<<" ";
+        }
+        
+        else
+        {
+            cout<<dif[i]<<" ";
+        }    
+    }
+
+}
