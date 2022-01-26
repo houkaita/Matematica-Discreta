@@ -2,20 +2,21 @@
 
 using namespace std;
 
-void uniao (int cona[], int conb []);
-void diferenca(int cona[], int conb []);
+void uniao (int cona[], int conb [], int y);
+void diferenca(int cona[], int conb [], int y);
 
 int main ()
 {
-    int x, cona[2], conb [2], i;
+    int y=3;
+    int x, cona[y], conb [y], i;
 
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < y; i++)
     {
         cout<<"Insira valores para o conjunto A: ";
         cin>>cona[i];
     }
     
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < y; i++)
     {
         cout<<"Insira valores para o conjunto B: ";
         cin>>conb[i];
@@ -30,8 +31,8 @@ int main ()
 
         switch (x)
         {
-        case 1: uniao(cona, conb); break;
-        case 2: diferenca(cona, conb); break;
+        case 1: uniao(cona, conb, y); break;
+        case 2: diferenca(cona, conb, y); break;
         }
 
     } while (x!=0);
@@ -41,50 +42,50 @@ int main ()
 
 }
 
-void uniao (int cona[], int conb [])
+void uniao (int cona[], int conb [], int y)
 {
-    int u[4];
+    int u[y*2];
 
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < y*2; i++)
     {
-        if (i < 2)
+        if (i < y)
         {
             u[i]=cona[i];
         }
         else
         {
-            u[i]=conb[i-2];
+            u[i]=conb[i-(y)];
         }
     }
     
     cout<<"Conjunto uniao e ";
 
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < y*2; i++)
     {   
         cout<<u[i]<<" ";
     }
     
 }
 
-void diferenca(int cona[], int conb[])
+void diferenca(int cona[], int conb[], int y)
 {
-    int dif[4];
+    int dif[y*2];
     
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < y*2; i++)
     {
-        if (i < 2)
+        if (i < y)
         {
             dif[i]=cona[i];
         }
         else
         {
-            dif[i]=conb[i-2];
+            dif[i]=conb[i-(y)];
         }
     }
     
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < y; i++)
     {
-        for (int j = 2; j < 4; j++)
+        for (int j = (y); j < y*2; j++)
         {
             if (dif[i]==dif[j])
             {
@@ -95,7 +96,7 @@ void diferenca(int cona[], int conb[])
     }
     
     cout<<"Conjunto diferenca e ";
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < y*2; i++)
     {
         if (dif[i]==0)
         {
