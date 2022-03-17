@@ -25,8 +25,7 @@ int main()
             r = r + (b * auxi);
             d++;
         }
-        //printf("%.0f                %.0f             %.0f               %.0f\n", d, s, i, r);
-        printf("%f\n", s);
+        printf("%.0f                %.0f             %.0f               %.0f\n", d, s, i, r);
     }
 
     return 0;
